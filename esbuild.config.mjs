@@ -33,8 +33,13 @@ const code = result.outputFiles[0].text
 
 // Wrap in __ModuleLoader__ format.
 // The host only passes `require` to the factory — we must create module/exports locally.
+// The registration id MUST equal package.json `name` (and the cordis patch entry
+// `name`): the boot graph keys rows by entry name and the loader's arrive()
+// dedup checks factories.has(<entry name>). A mismatched id makes the bundle
+// execute twice (second load throws "duplicate factory registration"), failing
+// web boot — regression since the 2026-10-25 rename to dsh-kanban-plugin.
 const wrapped = `window.__ModuleLoader__.load({
-  id: "dsh-kanban",
+  id: "dsh-kanban-plugin",
   factory: (require) => {
     var module = { exports: {} };
     var exports = module.exports;
