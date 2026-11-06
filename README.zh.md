@@ -41,7 +41,7 @@ DeepSeek Harness Web GUI 的热插拔任务看板插件，提供任务管理、�
 
 ```bash
 # 从 GitHub 源码安装（推荐）
-dsh plugin --profile web add github:15217814598/dsh-kanban
+dsh plugin --profile web add github:hfanshu/dsh-kanban
 
 # 或从本地目录安装（开发模式）
 dsh plugin --profile web add link:/path/to/dsh-kanban
